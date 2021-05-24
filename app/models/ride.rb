@@ -9,4 +9,8 @@ class Ride < ApplicationRecord
   def self.thrillers_first
     order(rating: :desc)
   end
+
+  def self.ratings_avg
+    average("rating").to_f.round(1)
+  end
 end

@@ -7,7 +7,12 @@ class Mechanic < ApplicationRecord
   end
 
   def self.average_experience
-    average("experience").to_i
+    average(:experience).to_i
     # sum("experience")/self.count.to_i
+  end
+
+  def open_rides_by_thrill
+    # rides.where(open: true).order(rating: :desc)
+    rides.only_open.thrillers_first
   end
 end
